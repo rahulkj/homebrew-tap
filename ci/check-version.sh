@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 REPO_OM=pivotal-cf/om
 REPO_CONCOURSE=concourse/concourse
@@ -73,6 +73,8 @@ cred-alert() {
 git-commit-push() {
   cd ..
   rm -rf *.bak
+  git config --global user.email "ci@homelab.io"
+  git config --global user.name "CI Bot"
   git add . && git commit -m "Updated formulas" && git push
 }
 
