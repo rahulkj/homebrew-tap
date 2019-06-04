@@ -14,7 +14,9 @@ jobs:
         type: docker-image
         source: {repository: rjain/buildbox}
       inputs:
-        - name: git-repo
+      - name: git-repo
+      outputs:
+      - name: commit-repo
       run:
         path: bash
         args:
@@ -23,6 +25,8 @@ jobs:
           pushd git-repo/ci
             ./check-version.sh
           popd
+    - put: git-repo
+      params: {repository: commit-repo}
 
 resources:
 - name: schedule

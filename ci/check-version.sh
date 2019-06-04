@@ -71,15 +71,17 @@ cred-alert() {
 }
 
 git-commit-push() {
-  cd ..
+  git clone git-repo commit-repo
+  cp git-repo/*.rb commit-repo/
+  cd commit-repo
   git checkout master
   git config --global user.email "ci@homelab.io"
   git config --global user.name "CI Bot"
-  git add . && git commit -m "Updated formulas" && git push origin master
+  git add . && git commit -m "Updated formulas"
 }
 
 fly
 concourse
 om
 cred-alert
-git-commit-push
+git-commit
