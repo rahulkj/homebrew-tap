@@ -70,19 +70,7 @@ cred-alert() {
   rm cred-alert
 }
 
-git-commit() {
-  git config --global user.email "ci@homelab.io"
-  git config --global user.name "CI Bot"
-  git clone git-repo commit-repo
-  cp git-repo/*.rb commit-repo/
-  pushd commit-repo
-  git checkout master
-  git add . && git commit -m "Updated formulas"
-  popd
-}
-
 fly
 concourse
 om
 cred-alert
-git-commit
