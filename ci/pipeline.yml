@@ -1,0 +1,41 @@
+---
+jobs:
+- name: update-versions
+  public: true
+  serial: true
+  plan:
+  - get: schedule
+    trigger: true
+  - get: git-repo
+  - task: update
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: rjain/buildbox}
+      run:
+        path: bash
+        args:
+        - "-c"
+        - |
+          pushd git-repo/ci
+            ./check-version.sh
+          popd
+
+resources:
+- name: schedule
+  type: time
+  source:
+    interval: 24h
+    start: "12:00 AM"
+    stop: "11:59 PM"
+    location: America/Los_Angeles
+    days: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+
+- name: git-repo
+  type: git
+  source:
+    uri: ((git_url))
+    branch: ((git_branch))
+    username: ((git_username))
+    password: ((git_token))

@@ -23,7 +23,7 @@ fly() {
         SHA=$(shasum -a 256 fly.tgz | cut -d ' ' -f1)
         VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-        sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/fly.rb
+        sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../fly.rb
 
         rm fly.tgz *.bak
       fi
@@ -39,7 +39,7 @@ concourse() {
         SHA=$(shasum -a 256 concourse.tgz | cut -d ' ' -f1)
         VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-        sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/concourse.rb
+        sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../concourse.rb
 
         rm concourse.tgz *.bak
       fi
@@ -53,7 +53,7 @@ om() {
     SHA=$(shasum -a 256 om | cut -d ' ' -f1)
     VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-    sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/om.rb
+    sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
 
     rm om *.bak
 }
@@ -65,12 +65,18 @@ cred-alert() {
   SHA=$(shasum -a 256 cred-alert | cut -d ' ' -f1)
   VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-  sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/cred-alert.rb
+  sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../cred-alert.rb
 
   rm cred-alert *.bak
+}
+
+git-commit-push() {
+  cd ..
+  git add . && git commit -m "Updated formulas" && git push
 }
 
 fly
 concourse
 om
 cred-alert
+git-commit-push
