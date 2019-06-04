@@ -72,9 +72,10 @@ cred-alert() {
 
 git-commit-push() {
   cd ..
+  git checkout master
   git config --global user.email "ci@homelab.io"
   git config --global user.name "CI Bot"
-  git add . && git commit -m "Updated formulas" && git push
+  git add . && git commit -m "Updated formulas" && git push origin master
 }
 
 fly
