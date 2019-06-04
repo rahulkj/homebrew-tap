@@ -25,7 +25,7 @@ fly() {
 
         sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../fly.rb
 
-        rm fly.tgz *.bak
+        rm fly.tgz
       fi
     done <<< "$DOWNLOAD_URL"
 }
@@ -41,7 +41,7 @@ concourse() {
 
         sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../concourse.rb
 
-        rm concourse.tgz *.bak
+        rm concourse.tgz
       fi
     done <<< "$DOWNLOAD_URL"
 }
@@ -67,11 +67,12 @@ cred-alert() {
 
   sed -i .bak "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../cred-alert.rb
 
-  rm cred-alert *.bak
+  rm cred-alert
 }
 
 git-commit-push() {
   cd ..
+  rm -rf *.bak
   git add . && git commit -m "Updated formulas" && git push
 }
 
