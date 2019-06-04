@@ -8,7 +8,7 @@ class Concourse < Formula
   depends_on :arch => :x86_64
 
   def install
-    bin.install "concourse"
+    bin.install "bin/concourse"
   end
 
   test do
