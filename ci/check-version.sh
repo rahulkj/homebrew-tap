@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 REPO_OM=pivotal-cf/om
 REPO_CONCOURSE=concourse/concourse
