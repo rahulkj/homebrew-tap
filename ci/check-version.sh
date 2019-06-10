@@ -59,7 +59,7 @@ om() {
 }
 
 cred-alert() {
-  get_latest_release "$REPO_CRED_ALERT" "linux"
+  get_latest_release "$REPO_CRED_ALERT" "darwin"
 
   wget -qO cred-alert "$DOWNLOAD_URL"
   SHA=$(shasum -a 256 cred-alert | cut -d ' ' -f1)

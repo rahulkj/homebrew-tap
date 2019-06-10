@@ -1,2 +1,2 @@
-git_url: https://github.com/rahul-kj/homebrew-tap
-git_branch: master
+git_url: ((homebrew_git_url))
+git_branch: ((homebrew_git_branch))
