@@ -50,7 +50,7 @@ om() {
     get_latest_release "$REPO_OM" "darwin"
 
     while read -r line; do
-      if [[ "$line" == *om-*linux-*.tar.gz ]]; then
+      if [[ "$line" == *om-*darwin-*.tar.gz ]]; then
         wget -qO om.tgz "$line"
         SHA=$(shasum -a 256 om.tgz | cut -d ' ' -f1)
         VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
