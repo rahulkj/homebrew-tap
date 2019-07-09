@@ -49,13 +49,17 @@ concourse() {
 om() {
     get_latest_release "$REPO_OM" "darwin"
 
-    wget -qO om "$DOWNLOAD_URL"
-    SHA=$(shasum -a 256 om | cut -d ' ' -f1)
-    VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
+    while read -r line; do
+      if [[ "$line" == *om-*linux-*.tar.gz ]]; then
+        wget -qO om.tgz "$line"
+        SHA=$(shasum -a 256 om.tgz | cut -d ' ' -f1)
+        VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-    sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
+        sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
 
-    rm om
+        rm om.tgz
+      fi
+    done <<< "$DOWNLOAD_URL"
 }
 
 cred-alert() {
