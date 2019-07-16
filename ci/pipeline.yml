@@ -26,8 +26,8 @@ jobs:
             ./check-version.sh
           popd
 
-          git config --global user.email "ci@homelab.io"
-          git config --global user.name "CI Bot"
+          git config --global user.email "rahulkj@gmail.com"
+          git config --global user.name "rahulkj"
 
           git clone git-repo commit-repo
           cp git-repo/*.rb commit-repo/
