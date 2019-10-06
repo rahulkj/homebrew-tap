@@ -33,8 +33,13 @@ jobs:
           cp git-repo/*.rb commit-repo/
 
           cd commit-repo
-          git add -A
-          git commit -m "Updated Formulas" --allow-empty
+          DIFF=$(git diff-index HEAD)
+          if [[ "$DIFF" != "" ]]; then
+            git add -A
+            git commit -m "Updated Formulas"
+          else
+            echo "No changes"
+          fi
 
   - put: git-repo
     params: {repository: commit-repo}
