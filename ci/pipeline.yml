@@ -38,7 +38,7 @@ jobs:
             git add -A
             git commit -m "Updated Formulas"
           else
-            echo "No changes"
+            echo "No changes for upstream"
           fi
 
   - put: git-repo
