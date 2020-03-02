@@ -25,7 +25,10 @@ fly() {
         SHA=$(shasum -a 256 fly.tgz | cut -d ' ' -f1)
         VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-        if [[ echo "$CURRENT_VERSION $VERSION" | awk '{print ($1 < $2)}' ]]; then
+        NEW_VERSION=$(echo "$VERSION" | cut -d '"' -f2)
+        IS_NEW=$(echo "$CURRENT_VERSION $NEW_VERSION" | awk '{print ($1 < $2)}')
+
+        if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../fly.rb
         else
           echo "skipping updating the version"
@@ -34,8 +37,6 @@ fly() {
         rm fly.tgz
       fi
     done <<< "$DOWNLOAD_URL"
-  else
-
 }
 
 concourse() {
@@ -47,9 +48,13 @@ concourse() {
       if [[ "$line" == *concourse-*darwin-amd64.tgz ]]; then
         wget -qO concourse.tgz "$line"
         SHA=$(shasum -a 256 concourse.tgz | cut -d ' ' -f1)
-        VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-        if [[ echo "$CURRENT_VERSION $VERSION" | awk '{print ($1 < $2)}' ]]; then
+        VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
+        NEW_VERSION=$(echo "$VERSION" | cut -d '"' -f2)
+
+        IS_NEW=$(echo "$CURRENT_VERSION $NEW_VERSION" | awk '{print ($1 < $2)}')
+
+        if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../concourse.rb
         else
           echo "skipping updating the version"
@@ -71,7 +76,10 @@ om() {
         SHA=$(shasum -a 256 om.tgz | cut -d ' ' -f1)
         VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-        if [[ echo "$CURRENT_VERSION $VERSION" | awk '{print ($1 < $2)}' ]]; then
+        NEW_VERSION=$(echo "$VERSION" | cut -d '"' -f2)
+        IS_NEW=$(echo "$CURRENT_VERSION $NEW_VERSION" | awk '{print ($1 < $2)}')
+
+        if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
         else
           echo "skipping updating the version"
@@ -91,7 +99,10 @@ cred-alert() {
   SHA=$(shasum -a 256 cred-alert | cut -d ' ' -f1)
   VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
 
-  if [[ echo "$CURRENT_VERSION $VERSION" | awk '{print ($1 < $2)}' ]]; then
+  NEW_VERSION=$(echo "$VERSION" | cut -d '"' -f2)
+  IS_NEW=$(echo "$CURRENT_VERSION $NEW_VERSION" | awk '{print ($1 < $2)}')
+
+  if (( $IS_NEW == 1 )); then
     sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../cred-alert.rb
   else
     echo "skipping updating the version"
