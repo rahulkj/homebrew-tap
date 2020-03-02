@@ -30,6 +30,7 @@ fly() {
 
         if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../fly.rb
+          echo "updating the version to $VERSION"
         else
           echo "skipping updating the version"
         fi
@@ -56,6 +57,7 @@ concourse() {
 
         if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../concourse.rb
+          echo "updating the version to $VERSION"
         else
           echo "skipping updating the version"
         fi
@@ -81,6 +83,7 @@ om() {
 
         if (( $IS_NEW == 1 )); then
           sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
+          echo "updating the version to $VERSION"
         else
           echo "skipping updating the version"
         fi
@@ -104,6 +107,7 @@ cred-alert() {
 
   if (( $IS_NEW == 1 )); then
     sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../cred-alert.rb
+    echo "updating the version to $VERSION"
   else
     echo "skipping updating the version"
   fi
