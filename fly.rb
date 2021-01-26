@@ -1,9 +1,9 @@
 class Fly < Formula
   desc     "Concourse Product - fly cli"
   homepage "https://github.com/concourse/concourse"
-  version  "6.7.3"
+  version  "6.7.4"
   url      "https://github.com/concourse/concourse/releases/download/v#{version}/fly-#{version}-darwin-amd64.tgz"
-  sha256   "3e4a347868c444c6dc4b595082e508b6242d6fbd14a9475c576058ceda51294e"
+  sha256   "eb3b118cd7d50552df5e66d490be3ccbb16b78ebf98e61865079ffbbc80b7223"
 
   depends_on :arch => :x86_64
 
