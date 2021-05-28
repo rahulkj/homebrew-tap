@@ -1,9 +1,9 @@
 class Concourse < Formula
   desc     "Concourse Product - concourse cli"
   homepage "https://github.com/concourse/concourse"
-  version  "7.3.0"
+  version  "7.3.1"
   url      "https://github.com/concourse/concourse/releases/download/v#{version}/concourse-#{version}-darwin-amd64.tgz"
-  sha256   "c4dc02e7ceef175db85b042746eecfe5ec2bf74cce8e95bdce8b09fb1ef64fe9"
+  sha256   "5c91acad2cf07decfcece21d15e0de54ec0b01832c83a2b914c8c4cbcc259790"
 
   depends_on :arch => :x86_64
 
