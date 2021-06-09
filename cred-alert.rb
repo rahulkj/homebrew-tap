@@ -1,9 +1,9 @@
 class CredAlert < Formula
   desc     "Pivotal - cred-alert cli"
   homepage "https://github.com/pivotal-cf/cred-alert"
-  version  "2019-03-28-22-27-36"
+  version  "2021-06-09-20-24-53"
   url      "https://github.com/pivotal-cf/cred-alert/releases/download/#{version}/cred-alert-cli_darwin"
-  sha256   "85c84cb775172e480051b3d7d4f22b60e9b5de964003b874ebf8db72a4ffccdb"
+  sha256   "841b9709df1d028242a226904c6b2e0b46d18667328b8be38df051d120dcdca0"
 
   depends_on :arch => :x86_64
 
