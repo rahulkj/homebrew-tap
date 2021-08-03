@@ -1,9 +1,9 @@
 class Om < Formula
   desc     "Pivotal - om cli"
   homepage "https://github.com/pivotal-cf/om"
-  version  "7.3.0"
+  version  "7.3.1"
   url      "https://github.com/pivotal-cf/om/releases/download/#{version}/om-darwin-#{version}.tar.gz"
-  sha256   "37cd52a0ec03a96a282e70f96950d980f26d77026d0f3f8fb01a84bd27cca9dc"
+  sha256   "c9895d23d1343a19a9110391fd30ad44fd7695681abe018daaa2e97a134fdced"
 
   depends_on :arch => :x86_64
 
