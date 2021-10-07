@@ -47,6 +47,7 @@ jobs:
 resources:
 - name: schedule
   type: time
+  icon: camera-timer
   source:
     interval: 24h
     start: "12:00 AM"
@@ -56,6 +57,7 @@ resources:
 
 - name: git-repo
   type: git
+  icon: github
   source:
     uri: ((git_url))
     branch: ((git_branch))
