@@ -67,32 +67,6 @@ concourse() {
     done <<< "$DOWNLOAD_URL"
 }
 
-om() {
-    get_latest_release "$REPO_OM" "darwin"
-
-    CURRENT_VERSION=$(cat $PWD/../om.rb | grep version | head -1 | cut -d '"' -f2)
-
-    while read -r line; do
-      if [[ "$line" == *om-*darwin-*.tar.gz ]]; then
-        wget -qO om.tgz "$line"
-        SHA=$(shasum -a 256 om.tgz | cut -d ' ' -f1)
-        VERSION=$(echo "$LATEST_TAG" | tr -d 'v')
-
-        NEW_VERSION=$(echo "$VERSION" | cut -d '"' -f2)
-        IS_NEW=$(echo "$CURRENT_VERSION $NEW_VERSION" | awk '{print ($1 < $2)}')
-
-        if (( $IS_NEW == 1 )); then
-          sed -i "s/version  \".*\"/version  $VERSION/ ;s/sha256.*/sha256   \"$SHA\"/" $PWD/../om.rb
-          echo "updating the version to $VERSION"
-        else
-          echo "skipping updating the version"
-        fi
-
-        rm om.tgz
-      fi
-    done <<< "$DOWNLOAD_URL"
-}
-
 cred-alert() {
   get_latest_release "$REPO_CRED_ALERT" "darwin"
 
