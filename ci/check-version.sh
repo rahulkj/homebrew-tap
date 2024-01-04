@@ -91,5 +91,4 @@ cred-alert() {
 
 fly
 concourse
-om
 cred-alert
