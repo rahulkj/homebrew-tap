@@ -1,11 +1,8 @@
 HOMEBREW TAP
 ---
 
-This tap provides formulas to install the following CLI's:
+This tap provides casks to install the following CLI's:
 
-| CLI | Link |
+| Cask | Link |
 | --- | --- |
-| Cred Alert | https://github.com/pivotal-cf/cred-alert |
-| Concourse | https://github.com/concourse/concourse |
-| Fly | https://github.com/concourse/concourse |
-| OM | https://github.com/pivotal-cf/om |
+| Orchard | https://github.com/rahulkj/orchard |
