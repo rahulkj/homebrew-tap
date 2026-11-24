@@ -23,5 +23,5 @@ cask "orchard" do
 
   binary "orchard"
 
-  # No zap stanza required
+  zap :not_required
 end
